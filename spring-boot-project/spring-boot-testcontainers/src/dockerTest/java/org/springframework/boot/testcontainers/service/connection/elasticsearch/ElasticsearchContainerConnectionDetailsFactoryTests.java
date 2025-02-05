@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2024 the original author or authors.
+ * Copyright 2012-2025 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import java.io.IOException;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -30,7 +29,7 @@ import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchClientA
 import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
 import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.boot.testsupport.container.TestImage;
+import org.springframework.boot.testsupport.container.ElasticsearchContainer8;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
@@ -47,7 +46,7 @@ class ElasticsearchContainerConnectionDetailsFactoryTests {
 
 	@Container
 	@ServiceConnection
-	static final ElasticsearchContainer elasticsearch = TestImage.container(ElasticsearchContainer.class);
+	static final ElasticsearchContainer8 elasticsearch = new ElasticsearchContainer8();
 
 	@Autowired(required = false)
 	private ElasticsearchConnectionDetails connectionDetails;
